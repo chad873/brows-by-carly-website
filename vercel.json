@@ -1,0 +1,114 @@
+{
+  "cleanUrls": false,
+  "rewrites": [
+    {
+      "source": "/services",
+      "destination": "/Services.dc.html"
+    },
+    {
+      "source": "/powder-brows",
+      "destination": "/Powder Brows.dc.html"
+    },
+    {
+      "source": "/nano-brows",
+      "destination": "/Nano Brows.dc.html"
+    },
+    {
+      "source": "/combo-brows",
+      "destination": "/Combo Brows.dc.html"
+    },
+    {
+      "source": "/saline-removal",
+      "destination": "/Saline Removal.dc.html"
+    },
+    {
+      "source": "/san-diego",
+      "destination": "/San Diego.dc.html"
+    },
+    {
+      "source": "/bay-area",
+      "destination": "/Bay Area.dc.html"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/Portfolio.dc.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/About.dc.html"
+    },
+    {
+      "source": "/site-map",
+      "destination": "/Site Map.dc.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": ".*\\.vercel\\.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/homepage",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about-brows-by-carly",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contactbrowsbycarly",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/brows",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/portfolioold",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/404-page",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/brows-by-carly-blog",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/brows-by-carly-blog/category/:slug*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/brows-by-carly-blog/tag/:slug*",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}

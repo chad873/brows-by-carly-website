@@ -1,0 +1,66 @@
+/* Phone layout (max-width 719px, the same breakpoint the page components use).
+   Desktop and tablet keep the exported layout. mobile-scroll.js adds the motion. */
+[data-hprog] { display: none; } /* progress line for the pinned rows; phones only */
+
+@media (max-width: 719px) {
+  /* Keep the last footer links clear of the fixed booking bar. */
+  [data-sc-name="Site Footer"] { padding-bottom: 84px; }
+
+  [data-mhide] { display: none !important; }
+
+  /* Service-page hero photo: short enough that the page title shows on the first screen. */
+  [data-mhero] { min-height: clamp(210px, 32svh, 300px) !important; flex-basis: auto !important; }
+  [data-mhero] > img { object-position: 50% 40%; }
+  /* Location heroes: keep Carly (San Diego) and her hands with the machine (Bay Area) in the short phone frame. */
+  [data-mhero] > img[data-mcrop="seated"] { object-position: 50% 62% !important; }
+  [data-mhero] > img[data-mcrop="hands"] { object-position: 50% 80% !important; }
+
+  /* All Services hero shortcuts: an even two-by-two instead of a 3 + 1 wrap. */
+  nav[aria-label="On this page"] { display: grid !important; grid-template-columns: 1fr 1fr; width: calc(100% - 32px) !important; border-radius: 26px !important; gap: 4px !important; }
+  nav[aria-label="On this page"] > a { justify-content: center; }
+
+  /* Bigger touch areas without moving anything: text links get invisible vertical padding,
+     the hero section links reach 44px, and the header Instagram icon gets a 44px hit area. */
+  #dc-root section a:not([style*="padding"]):not(p a):not(blockquote a) { padding-block: 11px; margin-block: -11px; }
+  #dc-root section a[href^="#"][style*="border-radius:999px"], #dc-root section a[href^="#"][style*="border-radius: 999px"] { min-height: 44px; display: inline-flex; align-items: center; box-sizing: border-box; }
+  [data-sc-name="Site Header"] a[aria-label="Instagram"] { position: relative; }
+  [data-sc-name="Site Header"] a[aria-label="Instagram"]::after { content: ""; position: absolute; inset: -11px; }
+
+  /* Rows that become vertical lists */
+  [data-mstack] { grid-auto-flow: row !important; grid-auto-columns: auto !important; overflow: visible !important; scroll-snap-type: none !important; }
+  [data-mstack="list"], [data-mstack="rows"] { grid-template-columns: minmax(0, 1fr) !important; margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+
+  /* Photo galleries: two-up grid */
+  [data-mstack="grid"] { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
+  [data-mstack="grid"] > * { flex: none !important; width: auto !important; min-width: 0; }
+  [data-mstack="grid"] img { border-radius: 16px !important; }
+  [data-mstack="grid"] figcaption { left: 8px !important; top: 8px !important; padding: 5px 9px !important; font-size: 11px !important; letter-spacing: .1em !important; }
+
+  /* Brow Notes: thumbnail beside the text */
+  [data-mstack="rows"] { gap: 30px !important; }
+  [data-mstack="rows"] > * { grid-template-columns: minmax(0, 38%) minmax(0, 1fr); column-gap: 18px; row-gap: 10px !important; }
+  [data-mstack="rows"] > * > :first-child { grid-row: 1 / span 3; align-self: start; border-radius: 16px !important; }
+  [data-mstack="rows"] > * > :nth-child(2) { border-top: 0 !important; padding-top: 0 !important; gap: 10px !important; }
+  [data-mstack="rows"] > * > :nth-child(2) > span { font-size: 22px !important; }
+  [data-mstack="rows"] > * > :nth-child(2) > h3 { font-size: 17px !important; }
+  [data-mstack="rows"] > * > p { font-size: 15px !important; line-height: 1.55 !important; }
+
+  /* Healing timeline: vertical, with a line that fills as you scroll */
+  [data-mstack="timeline"] { position: relative; border-top: 0 !important; border-bottom: 0 !important; padding-left: 34px !important; }
+  [data-mstack="timeline"]::before,
+  [data-mstack="timeline"]::after { content: ""; position: absolute; left: 7px; top: 28px; bottom: 34px; width: 2px; background: rgba(21, 18, 15, .15); }
+  [data-mstack="timeline"]::after { background: #15120F; transform-origin: top; transform: scaleY(var(--fill, 0)); }
+  [data-mstack="timeline"] > li { position: relative; padding: 16px 16px 18px !important; border-left: 0 !important; border-radius: 14px; }
+  [data-mstack="timeline"] > li::before { content: ""; position: absolute; left: -33px; top: 22px; width: 12px; height: 12px; box-sizing: border-box; border-radius: 50%; background: #F3EDE5; border: 2px solid rgba(21, 18, 15, .3); transition: background .3s ease, border-color .3s ease; z-index: 1; }
+  [data-mstack="timeline"] > li[data-on]::before { background: #15120F; border-color: #15120F; }
+
+  /* Card rows that pin and slide sideways (switched on by mobile-scroll.js) */
+  [data-hscroll-on] { overflow: hidden; }
+  [data-hscroll-on] > [data-hrow] { overflow: visible !important; scroll-snap-type: none !important; will-change: transform; }
+  [data-hscroll-on="arch"] > [data-hrow] { grid-auto-columns: min(78vw, 300px) !important; }
+  [data-hscroll-on="steps"] > [data-hrow] { grid-auto-columns: min(76vw, 300px) !important; }
+  [data-hscroll-on="steps"] > [data-hrow] > li > :first-child { aspect-ratio: 4 / 3 !important; }
+  [data-hscroll-on] [data-hprog] { display: block; position: relative; height: 2px; margin: 22px clamp(20px, 4vw, 48px) 0; }
+  [data-hscroll-on] [data-hprog]::before { content: ""; position: absolute; inset: 0; background: currentColor; opacity: .2; }
+  [data-hscroll-on] [data-hprog] > i { position: absolute; inset: 0; display: block; background: currentColor; transform-origin: left; transform: scaleX(0); }
+}

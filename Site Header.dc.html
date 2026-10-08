@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="background:rgba(243,237,229,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(21,18,15,.12);font-family:'Playfair Display',Georgia,serif;color:#15120F">
+  <div style="max-width:1320px;margin:0 auto;padding:12px clamp(20px,4vw,48px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ openMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}" style="all:unset;cursor:pointer;width:44px;height:44px;margin-left:-10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+          <span style="display:block;width:22px;height:1.5px;background:#15120F"></span>
+          <span style="display:block;width:22px;height:1.5px;background:#15120F"></span>
+        </button>
+      </sc-if>
+      <a href="https://www.instagram.com/browsbycarlyc" aria-label="Instagram" style="display:flex;width:22px;height:22px;border:1.6px solid #15120F;border-radius:6px;align-items:center;justify-content:center">
+        <span style="width:9px;height:9px;border:1.6px solid #15120F;border-radius:50%"></span>
+      </a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#4A4038">San Diego · Bay Area</span></sc-if>
+    </div>
+    <a href="/" aria-label="Brows by Carly home" style="display:block">
+      <img src="logos/site-header/bbc-logo-pmu-monogram-signature-black.png" alt="PMU Brows by Carly" style="height:clamp(48px,6vw,78px);width:auto;display:block">
+    </a>
+    <div style="display:flex;justify-content:flex-end">
+      <a href="https://brows-by-carly-105163.square.site" style="display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;background:#15120F;color:#F3EDE5;border-radius:10px;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;white-space:nowrap" style-hover="background:#3A322C;color:#F3EDE5">Book now</a>
+    </div>
+  </div>
+
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="Main" style="display:flex;justify-content:center;align-items:center;gap:clamp(20px,3vw,36px);padding:0 20px 14px;font-size:16px">
+      <div onMouseEnter="{{ openS }}" onMouseLeave="{{ closeDd }}" style="position:relative">
+        <button onClick="{{ toggleS }}" aria-expanded="{{ sOpen }}" aria-haspopup="true" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:{{ uServices }};text-underline-offset:4px">Services <span style="font-family:'Jost',sans-serif;font-size:10px">▾</span></button>
+        <sc-if value="{{ sOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:14px;z-index:5">
+            <div style="background:#F3EDE5;border:1px solid rgba(21,18,15,.15);border-radius:18px;box-shadow:0 18px 40px rgba(21,18,15,.12);padding:8px;width:300px;display:grid">
+              <a href="/services" onClick="{{ closeDd }}" style="display:grid;gap:3px;padding:12px 14px;margin-bottom:4px;border-radius:12px;border-bottom:1px solid rgba(21,18,15,.12);text-decoration:none" style-hover="background:#E7D9CB;color:#15120F"><span style="font-size:17px">All Services</span><span style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.04em;color:#4A4038">Menu, consultations &amp; touch-ups</span></a>
+              <a href="/powder-brows" onClick="{{ closeDd }}" style="display:grid;gap:3px;padding:12px 14px;border-radius:12px;text-decoration:none" style-hover="background:#E7D9CB;color:#15120F"><span style="font-size:17px">Powder Brows</span><span style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.04em;color:#4A4038">Soft shading, defined finish</span></a>
+              <a href="/nano-brows" onClick="{{ closeDd }}" style="display:grid;gap:3px;padding:12px 14px;border-radius:12px;text-decoration:none" style-hover="background:#E7D9CB;color:#15120F"><span style="font-size:17px">Nano Brows</span><span style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.04em;color:#4A4038">Fine hair strokes, most natural</span></a>
+              <a href="/combo-brows" onClick="{{ closeDd }}" style="display:grid;gap:3px;padding:12px 14px;border-radius:12px;text-decoration:none" style-hover="background:#E7D9CB;color:#15120F"><span style="font-size:17px">Combo Brows</span><span style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.04em;color:#4A4038">Strokes plus shading</span></a>
+              <a href="/saline-removal" onClick="{{ closeDd }}" style="display:grid;gap:3px;padding:12px 14px;border-radius:12px;text-decoration:none" style-hover="background:#E7D9CB;color:#15120F"><span style="font-size:17px">Saline Removal</span><span style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.04em;color:#4A4038">Lighten or remove old brow work</span></a>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <a href="/portfolio" style="text-decoration:{{ uPortfolio }}" style-hover="text-decoration:underline">Portfolio</a>
+      <a href="/about" style="text-decoration:{{ uAbout }}" style-hover="text-decoration:underline">About</a>
+      <a href="/#reviews" style="text-decoration:none" style-hover="text-decoration:underline">Reviews</a>
+      <a href="/#faq" style="text-decoration:none" style-hover="text-decoration:underline">FAQ</a>
+      <div onMouseEnter="{{ openL }}" onMouseLeave="{{ closeDd }}" style="position:relative">
+        <button onClick="{{ toggleL }}" aria-expanded="{{ lOpen }}" aria-haspopup="true" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:{{ uLocations }};text-underline-offset:4px">Locations <span style="font-family:'Jost',sans-serif;font-size:10px">▾</span></button>
+        <sc-if value="{{ lOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:100%;right:-20px;padding-top:14px;z-index:5">
+            <div style="background:#F3EDE5;border:1px solid rgba(21,18,15,.15);border-radius:18px;box-shadow:0 18px 40px rgba(21,18,15,.12);padding:8px;width:280px;display:grid">
+              <a href="/san-diego" onClick="{{ closeDd }}" style="display:grid;gap:3px;padding:12px 14px;border-radius:12px;text-decoration:none" style-hover="background:#E7D9CB;color:#15120F"><span style="font-size:17px">San Diego</span><span style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.04em;color:#4A4038">Now welcoming new clients</span></a>
+              <a href="/bay-area" onClick="{{ closeDd }}" style="display:grid;gap:3px;padding:12px 14px;border-radius:12px;text-decoration:none" style-hover="background:#E7D9CB;color:#15120F"><span style="font-size:17px">Bay Area · Campbell</span><span style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.04em;color:#4A4038">Select appointments</span></a>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </nav>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:0;z-index:50;background:#F3EDE5;color:#15120F;font-family:'Playfair Display',Georgia,serif;display:flex;flex-direction:column;padding:12px 20px 28px;overflow-y:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <a href="/" onClick="{{ closeMenu }}"><img src="logos/site-header/bbc-logo-pmu-monogram-signature-black.png" alt="PMU Brows by Carly home" style="height:48px;width:auto;display:block"></a>
+      <button onClick="{{ closeMenu }}" aria-label="Close menu" style="all:unset;cursor:pointer;width:44px;height:44px;border:1px solid #15120F;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:22px;font-weight:300">×</button>
+    </div>
+    <nav aria-label="Mobile" style="display:grid;gap:28px;margin-top:28px">
+      <div style="display:grid">
+        <div style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#4A4038;padding-bottom:6px;border-bottom:1px solid #15120F">Services</div>
+        <a href="/services" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;min-height:54px;border-bottom:1px solid rgba(21,18,15,.18);font-size:22px;font-style:italic;text-decoration:none">All Services<span style="font-family:'Jost',sans-serif;font-size:16px">→</span></a>
+        <a href="/powder-brows" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;min-height:54px;border-bottom:1px solid rgba(21,18,15,.18);font-size:22px;text-decoration:none">Powder Brows<span style="font-family:'Jost',sans-serif;font-size:16px">→</span></a>
+        <a href="/nano-brows" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;min-height:54px;border-bottom:1px solid rgba(21,18,15,.18);font-size:22px;text-decoration:none">Nano Brows<span style="font-family:'Jost',sans-serif;font-size:16px">→</span></a>
+        <a href="/combo-brows" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;min-height:54px;border-bottom:1px solid rgba(21,18,15,.18);font-size:22px;text-decoration:none">Combo Brows<span style="font-family:'Jost',sans-serif;font-size:16px">→</span></a>
+        <a href="/saline-removal" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;min-height:54px;border-bottom:1px solid rgba(21,18,15,.18);font-size:22px;text-decoration:none">Saline Removal<span style="font-family:'Jost',sans-serif;font-size:16px">→</span></a>
+      </div>
+      <div style="display:grid">
+        <div style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#4A4038;padding-bottom:6px;border-bottom:1px solid #15120F">Locations</div>
+        <a href="/san-diego" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;min-height:54px;border-bottom:1px solid rgba(21,18,15,.18);font-size:22px;text-decoration:none">San Diego<span style="font-family:'Jost',sans-serif;font-size:16px">→</span></a>
+        <a href="/bay-area" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;min-height:54px;border-bottom:1px solid rgba(21,18,15,.18);font-size:22px;text-decoration:none">Bay Area · Campbell<span style="font-family:'Jost',sans-serif;font-size:16px">→</span></a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 22px;font-size:18px">
+        <a href="/portfolio" onClick="{{ closeMenu }}" style="padding:10px 0">Portfolio</a>
+        <a href="/about" onClick="{{ closeMenu }}" style="padding:10px 0">About</a>
+        <a href="/#reviews" onClick="{{ closeMenu }}" style="padding:10px 0">Reviews</a>
+        <a href="/#faq" onClick="{{ closeMenu }}" style="padding:10px 0">FAQ</a>
+      </div>
+    </nav>
+    <div style="margin-top:auto;padding-top:28px;display:grid;gap:12px">
+      <a href="https://brows-by-carly-105163.square.site" style="display:flex;align-items:center;justify-content:center;min-height:54px;background:#15120F;color:#F3EDE5;border-radius:10px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none">Book an appointment</a>
+      <a href="https://brows-by-carly-105163.square.site" style="display:flex;align-items:center;justify-content:center;min-height:54px;border:1px solid #15120F;border-radius:10px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none">Free virtual consult</a>
+      <div style="display:flex;justify-content:center;gap:28px;padding-top:6px;font-family:'Jost',sans-serif;font-size:15px"><a href="tel:+14084750790" style="padding:10px 0">408-475-0790</a><a href="https://www.instagram.com/browsbycarlyc" style="padding:10px 0">Instagram</a></div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:flex;gap:6px;padding:6px;background:#15120F;border-radius:14px;box-shadow:0 10px 30px rgba(21,18,15,.3)">
+    <a href="https://brows-by-carly-105163.square.site" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:10px;color:#F3EDE5;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none" style-hover="color:#E7D9CB">Free consult</a>
+    <a href="https://brows-by-carly-105163.square.site" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:10px;background:#F3EDE5;color:#15120F;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none" style-hover="background:#E7D9CB;color:#15120F">Book now</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;140px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;home&quot;,&quot;services&quot;,&quot;powder&quot;,&quot;nano&quot;,&quot;combo&quot;,&quot;removal&quot;,&quot;portfolio&quot;,&quot;about&quot;,&quot;san-diego&quot;,&quot;bay-area&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: false, scrolled: false, menu: false, dd: null };
+  setMenu(o) { document.body.style.overflow = o ? 'hidden' : ''; this.setState({ menu: o }); }
+  componentDidMount() {
+    this.onResize = () => { const n = window.matchMedia('(max-width: 719px)').matches; if (n !== this.state.narrow) { if (!n && this.state.menu) this.setMenu(false); this.setState({ narrow: n, dd: null }); } };
+    this.onScroll = () => { const s = window.scrollY > 560; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onKey = e => { if (e.key === 'Escape') { if (this.state.menu) this.setMenu(false); if (this.state.dd) this.setState({ dd: null }); } };
+    window.addEventListener('resize', this.onResize);
+    this.mq = window.matchMedia('(max-width: 719px)'); this.mq.addEventListener ? this.mq.addEventListener('change', this.onResize) : this.mq.addListener(this.onResize);
+    if ('ResizeObserver' in window) { this.ro = new ResizeObserver(() => this.onResize()); this.ro.observe(document.documentElement); }
+    requestAnimationFrame(() => this.onResize()); setTimeout(() => this.onResize(), 300);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+    this.onResize(); this.onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    if (this.mq) { this.mq.removeEventListener ? this.mq.removeEventListener('change', this.onResize) : this.mq.removeListener(this.onResize); }
+    if (this.ro) this.ro.disconnect();
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    document.body.style.overflow = '';
+  }
+  renderVals() {
+    const { narrow, scrolled, menu, dd } = this.state;
+    const cur = this.props.current ?? '';
+    const isSvc = ['services', 'powder', 'nano', 'combo', 'removal'].includes(cur);
+    const isLoc = ['san-diego', 'bay-area'].includes(cur);
+    return {
+      narrow, wide: !narrow, menuOpen: menu, showBar: narrow && scrolled && !menu,
+      openMenu: () => this.setMenu(true), closeMenu: () => this.setMenu(false),
+      sOpen: dd === 's', lOpen: dd === 'l',
+      openS: () => this.setState({ dd: 's' }), openL: () => this.setState({ dd: 'l' }), closeDd: () => this.setState({ dd: null }),
+      toggleS: () => this.setState(s => ({ dd: s.dd === 's' ? null : 's' })), toggleL: () => this.setState(s => ({ dd: s.dd === 'l' ? null : 'l' })),
+      uServices: isSvc ? 'underline' : 'none', uLocations: isLoc ? 'underline' : 'none',
+      uPortfolio: cur === 'portfolio' ? 'underline' : 'none', uAbout: cur === 'about' ? 'underline' : 'none'
+    };
+  }
+}
+</script>
+</body>
+</html>

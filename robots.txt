@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /site-map
+
+Sitemap: https://www.browsbycarly.com/sitemap.xml

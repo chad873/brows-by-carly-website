@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<footer style="border-top:1px solid rgba(21,18,15,.15);padding:clamp(56px,7vw,88px) clamp(20px,4vw,48px) 32px;background:#F3EDE5;color:#15120F;font-family:'Playfair Display',Georgia,serif">
+  <div style="max-width:1280px;margin:0 auto;display:grid;gap:48px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:36px 40px;align-items:start">
+      <div style="display:grid;gap:18px">
+        <div style="font-family:'Ephesis',cursive;word-spacing:.08em;font-size:46px;line-height:.9">Brows by Carly</div>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#4A4038">Permanent makeup brows by Carly Campbell, licensed esthetician. By appointment only.</p>
+        <img src="logos/awards/2022-best-of-morgan-hill-badge-morgan-hill-times.jpeg" alt="2022 Best of Morgan Hill, Morgan Hill Times" loading="lazy" style="width:76px;height:76px;border-radius:50%;object-fit:cover">
+      </div>
+      <nav aria-label="Services" style="display:grid;font-size:16px;line-height:2.6">
+        <div style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;line-height:1.6;margin-bottom:6px">Services</div>
+        <a href="/services">All Services</a>
+        <a href="/powder-brows">Powder Brows</a>
+        <a href="/nano-brows">Nano Brows</a>
+        <a href="/combo-brows">Combo Brows</a>
+        <a href="/saline-removal">Saline Removal</a>
+      </nav>
+      <div style="display:grid;gap:18px;font-size:16px;line-height:1.6">
+        <div style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase">Locations</div>
+        <div style="display:grid;gap:4px"><a href="/san-diego" style="font-size:17px">San Diego</a><address style="font-style:normal;color:#4A4038;font-size:15px">7960 Silverton Ave Unit 205<br>San Diego, CA 92126</address></div>
+        <div style="display:grid;gap:4px"><a href="/bay-area" style="font-size:17px">Bay Area · Campbell</a><address style="font-style:normal;color:#4A4038;font-size:15px">Sorelle Salon, 18 N 1st Street<br>Campbell, CA 95008</address></div>
+      </div>
+      <nav aria-label="Studio" style="display:grid;font-size:16px;line-height:2.6">
+        <div style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;line-height:1.6;margin-bottom:6px">Studio</div>
+        <a href="/about">About Carly</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/#reviews">Reviews</a>
+        <a href="/#faq">FAQ</a>
+        <a href="https://www.browsbycarly.com/brows-by-carly-blog/before-your-appointment">Before &amp; After Care</a>
+      </nav>
+      <div style="display:grid;font-size:16px;line-height:2.6">
+        <div style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;line-height:1.6;margin-bottom:6px">Contact</div>
+        <a href="tel:+14084750790">408-475-0790</a>
+        <a href="mailto:browsbycarly@gmail.com">browsbycarly@gmail.com</a>
+        <a href="https://www.instagram.com/browsbycarlyc">Instagram</a>
+        <a href="https://www.facebook.com/browsbycarly">Facebook</a>
+        <a href="https://brows-by-carly-105163.square.site" style="font-weight:500">Book an appointment →</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;padding-top:24px;border-top:1px solid rgba(21,18,15,.15);font-size:14px;color:#4A4038">
+      <span>© 2026 Carly Campbell, Brows By Carly</span>
+      <span style="display:flex;flex-wrap:wrap;gap:8px 20px"><a href="https://www.browsbycarly.com/brows-by-carly-blog/terms-and-conditions" style="padding:6px 0">Terms &amp; Cancellation Policy</a><a href="https://www.browsbycarly.com/privacy-policy" style="padding:6px 0">Privacy Policy</a><a href="https://forjmedia.com" target="_blank" rel="nofollow noopener" style="padding:6px 0">Website made by Forj</a></span>
+    </div>
+  </div>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><div style="height:72px"></div></sc-if>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;520px&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: false };
+  componentDidMount() {
+    this.onResize = () => { const n = window.matchMedia('(max-width: 719px)').matches; if (n !== this.state.narrow) this.setState({ narrow: n }); };
+    window.addEventListener('resize', this.onResize);
+    this.mq = window.matchMedia('(max-width: 719px)'); this.mq.addEventListener ? this.mq.addEventListener('change', this.onResize) : this.mq.addListener(this.onResize);
+    if ('ResizeObserver' in window) { this.ro = new ResizeObserver(() => this.onResize()); this.ro.observe(document.documentElement); }
+    requestAnimationFrame(() => this.onResize()); setTimeout(() => this.onResize(), 300); this.onResize();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize);
+    if (this.mq) { this.mq.removeEventListener ? this.mq.removeEventListener('change', this.onResize) : this.mq.removeListener(this.onResize); }
+    if (this.ro) this.ro.disconnect(); }
+  renderVals() { return { narrow: this.state.narrow }; }
+}
+</script>
+</body>
+</html>
