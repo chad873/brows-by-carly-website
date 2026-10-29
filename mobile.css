@@ -1,3 +1,12 @@
+/* Carly's original script font; Ephesis remains the fallback. */
+@font-face {
+  font-family: 'Bon Vivant';
+  src: url('./BonVivant-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Phone layout (max-width 719px, the same breakpoint the page components use).
    Desktop and tablet keep the exported layout. mobile-scroll.js adds the motion. */
 [data-hprog] { display: none; } /* progress line for the pinned rows; phones only */
