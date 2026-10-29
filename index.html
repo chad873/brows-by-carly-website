@@ -369,7 +369,23 @@ img{display:block;max-width:100%}
 
     </div>
   </div>
-  <div id="simpleembed-feed" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);min-height:300px"></div>
+  <style>
+    #feed .live-posts { display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 clamp(20px,4vw,48px) 12px; }
+    #feed .live-posts::-webkit-scrollbar { display:none; }
+    #feed .live-post { flex:0 0 clamp(220px,25vw,330px);scroll-snap-align:start;color:#15120F;text-decoration:none;min-width:0; }
+    #feed .live-post img { display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;background:#E7D9CB; }
+    #feed .live-post-caption { display:block;margin-top:12px;font-family:'Jost',sans-serif;font-size:13px;line-height:1.5;color:#4A4038;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+    #feed .live-post-type { position:absolute;right:14px;top:14px;background:rgba(21,18,15,.7);color:white;border-radius:30px;padding:6px 10px;font:11px 'Jost',sans-serif;letter-spacing:.04em; }
+    @media(max-width:719px) { #feed .live-post { flex-basis:72vw;max-width:310px; } }
+  </style>
+  <div ref="{{ feedRef }}" class="live-posts" onMouseEnter="{{ feedPause }}" onMouseLeave="{{ feedResume }}" onTouchStart="{{ feedPause }}" onTouchEnd="{{ feedResume }}" aria-label="Latest Instagram posts">
+    <sc-if condition="{{ feedLoading }}"><span style="padding:30px;font-family:'Jost',sans-serif">Loading recent Instagram posts…</span></sc-if>
+    <sc-if condition="{{ feedError }}"><a href="https://www.instagram.com/browsbycarlyc" style="padding:30px">See the latest posts on Instagram</a></sc-if>
+    <a sc-for="post in {{ feedPosts }}" href="{{ post.permalink }}" target="_blank" rel="noopener noreferrer" class="live-post">
+      <span style="position:relative;display:block"><img src="{{ post.imageUrl }}" alt="{{ post.alt }}" loading="lazy" decoding="async"><sc-if condition="{{ post.isVideo }}"><span class="live-post-type">REEL</span></sc-if></span>
+      <span class="live-post-caption">{{ post.caption }}</span>
+    </a>
+  </div>
 </section>
 
 <section id="notes" data-screen-label="Brow Notes" style="scroll-margin-top:140px;background:#2B221D;color:#F3EDE5;padding:clamp(72px,10vw,140px) clamp(20px,4vw,48px)">
@@ -570,7 +586,7 @@ const PHOTOS = [
 ];
 const FILTERS = ['All', 'Healed', 'Fresh', 'Before / After'];
 class Component extends DCLogic {
-  state = { open: 1, img: 1, faq: 0, filter: 'All', narrow: false, scrolled: false, menuOpen: false };
+  state = { open: 1, img: 1, faq: 0, filter: 'All', narrow: false, scrolled: false, menuOpen: false, feedPosts: [], feedLoading: true, feedError: false };
   setMenu(o) { document.body.style.overflow = o ? 'hidden' : ''; this.setState({ menuOpen: o }); }
   stripRef = React.createRef();
   feedRef = React.createRef();
@@ -582,15 +598,20 @@ class Component extends DCLogic {
     else el.scrollBy({ left: d * step, behavior: 'smooth' });
   }
   componentDidMount() {
-    // Load the live Instagram feed after the DC/React markup mounts.
-    const instagramContainer = document.getElementById('simpleembed-feed');
-    if (instagramContainer && !instagramContainer.querySelector('script[data-feed-id]')) {
-      const embedScript = document.createElement('script');
-      embedScript.src = 'https://simpleembed.com/embed.js';
-      embedScript.dataset.feedId = 'dIFEMI3ayTxqC5sVJKWN';
-      embedScript.async = true;
-      instagramContainer.appendChild(embedScript);
-    }
+    // Fetch public post data; preserve the original custom carousel layout.
+    this.feedAbort = new AbortController();
+    fetch('https://simpleembed.com/api/feeds/dIFEMI3ayTxqC5sVJKWN', { signal: this.feedAbort.signal })
+      .then(response => { if (!response.ok) throw new Error('Instagram feed unavailable'); return response.json(); })
+      .then(data => {
+        const posts = Array.isArray(data.posts) ? data.posts.slice(0, 12).filter(p => p.imageUrl && p.permalink).map(p => ({
+          imageUrl: p.imageUrl, permalink: p.permalink,
+          caption: (p.caption || '').split('\\n')[0].slice(0, 160),
+          alt: (p.caption || 'Brows by Carly Instagram post').slice(0, 120),
+          isVideo: p.mediaType === 'VIDEO'
+        })) : [];
+        this.setState({ feedPosts: posts, feedLoading: false, feedError: !posts.length });
+      })
+      .catch(error => { if (error.name !== 'AbortError') this.setState({ feedLoading: false, feedError: true }); });
     document.documentElement.lang = 'en';
     this.onKey = e => { if (e.key === 'Escape' && this.state.menuOpen) this.setMenu(false); };
     window.addEventListener('keydown', this.onKey);
@@ -653,6 +674,7 @@ class Component extends DCLogic {
       serifHeadline: !script, scriptHeadline: script,
       wide: !narrow, narrow, showBar: narrow && scrolled && !this.state.menuOpen,
       menuOpen: this.state.menuOpen, openMenu: () => this.setMenu(true), closeMenu: () => this.setMenu(false),
+      feedPosts: this.state.feedPosts, feedLoading: this.state.feedLoading, feedError: this.state.feedError,
       feedRef: this.feedRef, feedPrev: () => this.scrollFeed(-1), feedNext: () => this.scrollFeed(1),
       feedPause: () => { this.feedPaused = true; }, feedResume: () => { this.feedPaused = false; },
       stripRef: this.stripRef, stripPrev: () => this.scrollStrip(-1), stripNext: () => this.scrollStrip(1),
