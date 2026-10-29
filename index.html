@@ -361,137 +361,15 @@ img{display:block;max-width:100%}
       <h2 data-reveal="0" style="margin:0;font-family:'Bon Vivant','Ephesis',cursive;word-spacing:.08em;font-weight:400;font-size:clamp(50px,5.42vw,80px);line-height:.95">On the Feed</h2>
       <a href="https://www.instagram.com/browsbycarlyc" style="display:flex;align-items:center;gap:14px;text-decoration:none">
         <img loading="lazy" decoding="async" src="instagram/profile-pic-browsbycarlyc-320.jpg" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover">
-        <span style="display:grid;gap:2px"><span style="font-size:18px">@browsbycarlyc</span><span style="font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.04em;color:#4A4038">381 posts · 2,471 followers</span></span>
+        <span style="display:grid;gap:2px"><span style="font-size:18px">@browsbycarlyc</span></span>
       </a>
     </div>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
       <a href="https://www.instagram.com/browsbycarlyc" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border:1px solid #15120F;border-radius:10px;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none" style-hover="background:#15120F;color:#F3EDE5">Follow</a>
-      <button onClick="{{ feedPrev }}" aria-label="Previous posts" style="all:unset;cursor:pointer;width:48px;height:48px;border:1px solid #15120F;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:18px" style-hover="background:#15120F;color:#F3EDE5">←</button>
-      <button onClick="{{ feedNext }}" aria-label="Next posts" style="all:unset;cursor:pointer;width:48px;height:48px;border:1px solid #15120F;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:18px" style-hover="background:#15120F;color:#F3EDE5">→</button>
+
     </div>
   </div>
-  <div ref="{{ feedRef }}" onMouseEnter="{{ feedPause }}" onMouseLeave="{{ feedResume }}" onTouchStart="{{ feedPause }}" style="display:flex;align-items:flex-start;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 clamp(20px,4vw,48px) 8px;scrollbar-width:none">
-      <a href="https://www.instagram.com/p/Dd_6LMTjHaG/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-10-02_Dd_6LMTjHaG_0.jpg" alt="Don’t take my word for it, take theirs." loading="lazy" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Carousel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Oct 2</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">Don’t take my word for it, take theirs.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/Dd7LgKiSvqR/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-30_Dd7LgKiSvqR_0_cover.jpg" alt="I’d say I’m pretty about it." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">▶ Reel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 30</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">I’d say I’m pretty about it.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/Dd6wkG5l_Wn/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-30_Dd6wkG5l_Wn_0.jpg" alt="A subtle, yet impactful brow upgrade." loading="lazy" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Carousel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 30</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">A subtle, yet impactful brow upgrade.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/Dd1m-uol61h/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-28_Dd1m-uol61h_0.jpg" alt="One more reason that brows are never one-size-fits-all." loading="lazy" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Carousel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 28</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">One more reason that brows are never one-size-fits-all.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/Ddt5JS0lWH8/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-25_Ddt5JS0lWH8_0_cover.jpg" alt="Just a little collection of brows I’ve loved creating lately." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">▶ Reel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 25</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">Just a little collection of brows I’ve loved creating lately.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/Ddou88fDfDW/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-23_Ddou88fDfDW_0.jpg" alt="Spotted: healed brows looking CUTE in my client’s selfies." loading="lazy" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Photo</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 23</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">Spotted: healed brows looking CUTE in my client’s selfies.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/DdjlcUdjPKN/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-21_DdjlcUdjPKN_0.jpg" alt="POV: your old brows faded a little warmer than planned… and you found me." loading="lazy" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Carousel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 21</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">POV: your old brows faded a little warmer than planned… and you found me.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/DdWuAAhDcMs/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-16_DdWuAAhDcMs_0_cover.jpg" alt="Sometimes your brows just need a little pick-me-up." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">▶ Reel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 16</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">Sometimes your brows just need a little pick-me-up.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/DdKBYYYGiJh/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-11_DdKBYYYGiJh_0.jpg" alt="POV: you finally booked the brow appointment." loading="lazy" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Carousel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 11</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">POV: you finally booked the brow appointment.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/DdEk9QPDNPt/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-09_DdEk9QPDNPt_0.jpg" alt="What actually changes once powder brows heal?" loading="lazy" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Photo</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 9</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">What actually changes once powder brows heal?</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/Dc3qYZdjj97/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-04_Dc3qYZdjj97_0_cover.jpg" alt="Okay, let’s see how good your PMU eye is." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">▶ Reel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 4</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">Okay, let’s see how good your PMU eye is.</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/Dc4FV2iPqQE/" style="flex:0 0 clamp(220px,22vw,300px);scroll-snap-align:start;display:grid;gap:14px;text-decoration:none" style-hover="color:#15120F;opacity:.88">
-        <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#DCD4CC">
-          <img src="instagram/posts/2026-09-04_Dc4FV2iPqQE_0_cover.jpg" alt="We don’t know her." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;background:#F3EDE5;border-radius:999px;padding:6px 12px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase">▶ Reel</span>
-        </div>
-        <div style="display:grid;gap:4px;padding:0 4px">
-          <span style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4A4038">Sep 4</span>
-          <span style="font-size:16px;line-height:1.45;font-style:italic;text-wrap:pretty">We don’t know her.</span>
-        </div>
-      </a>
-  </div>
+  <div id="simpleembed-feed" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);min-height:300px"></div>
 </section>
 
 <section id="notes" data-screen-label="Brow Notes" style="scroll-margin-top:140px;background:#2B221D;color:#F3EDE5;padding:clamp(72px,10vw,140px) clamp(20px,4vw,48px)">
@@ -704,6 +582,15 @@ class Component extends DCLogic {
     else el.scrollBy({ left: d * step, behavior: 'smooth' });
   }
   componentDidMount() {
+    // Load the live Instagram feed after the DC/React markup mounts.
+    const instagramContainer = document.getElementById('simpleembed-feed');
+    if (instagramContainer && !instagramContainer.querySelector('script[data-feed-id]')) {
+      const embedScript = document.createElement('script');
+      embedScript.src = 'https://simpleembed.com/embed.js';
+      embedScript.dataset.feedId = 'dIFEMI3ayTxqC5sVJKWN';
+      embedScript.async = true;
+      instagramContainer.appendChild(embedScript);
+    }
     document.documentElement.lang = 'en';
     this.onKey = e => { if (e.key === 'Escape' && this.state.menuOpen) this.setMenu(false); };
     window.addEventListener('keydown', this.onKey);
