@@ -354,7 +354,7 @@ img{display:block;max-width:100%}
   </div>
 </section>
 
-<section id="feed" data-screen-label="On the Feed" style="scroll-margin-top:140px;padding:clamp(72px,10vw,120px) 0">
+<section id="feed" data-screen-label="On the Feed" style="scroll-margin-top:140px;padding:clamp(72px,10vw,120px) 0;max-width:100%;overflow:hidden">
   <div style="max-width:1280px;margin:0 auto clamp(32px,4vw,48px);padding:0 clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px">
     <div style="display:grid;gap:18px">
       <div style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase">Fresh from Instagram</div>
@@ -366,11 +366,16 @@ img{display:block;max-width:100%}
     </div>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
       <a href="https://www.instagram.com/browsbycarlyc" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border:1px solid #15120F;border-radius:10px;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none" style-hover="background:#15120F;color:#F3EDE5">Follow</a>
+      <button type="button" aria-label="Previous Instagram posts" onClick="{{ feedPrev }}" class="feed-arrow">←</button>
+      <button type="button" aria-label="Next Instagram posts" onClick="{{ feedNext }}" class="feed-arrow">→</button>
 
     </div>
   </div>
   <style>
-    #feed .live-posts { display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 clamp(20px,4vw,48px) 12px; }
+    #feed .live-posts { box-sizing:border-box;display:flex;gap:16px;width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 0 12px;touch-action:pan-x pan-y; }
+    #feed .live-posts-frame { box-sizing:border-box;width:100%;max-width:1280px;min-width:0;margin:0 auto;padding:0 clamp(20px,4vw,48px);overflow:hidden; }
+    #feed .feed-arrow { width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #15120F;border-radius:50%;background:transparent;color:#15120F;cursor:pointer;font-size:20px;line-height:1; }
+    #feed .feed-arrow:hover { background:#15120F;color:#F3EDE5; }
     #feed .live-posts::-webkit-scrollbar { display:none; }
     #feed .live-post { flex:0 0 clamp(220px,25vw,330px);scroll-snap-align:start;color:#15120F;text-decoration:none;min-width:0; }
     #feed .live-post img { display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;background:#E7D9CB; }
@@ -378,6 +383,7 @@ img{display:block;max-width:100%}
     #feed .live-post-type { position:absolute;right:14px;top:14px;background:rgba(21,18,15,.7);color:white;border-radius:30px;padding:6px 10px;font:11px 'Jost',sans-serif;letter-spacing:.04em; }
     @media(max-width:719px) { #feed .live-post { flex-basis:72vw;max-width:310px; } }
   </style>
+  <div class="live-posts-frame">
   <div ref="{{ feedRef }}" class="live-posts" onMouseEnter="{{ feedPause }}" onMouseLeave="{{ feedResume }}" onTouchStart="{{ feedPause }}" onTouchEnd="{{ feedResume }}" aria-label="Latest Instagram posts">
     <sc-if value="{{ feedLoading }}"><span style="padding:30px;font-family:'Jost',sans-serif">Loading recent Instagram posts…</span></sc-if>
     <sc-if value="{{ feedError }}"><a href="https://www.instagram.com/browsbycarlyc" style="padding:30px">See the latest posts on Instagram</a></sc-if>
@@ -387,6 +393,7 @@ img{display:block;max-width:100%}
       <span class="live-post-caption">{{ post.caption }}</span>
     </a>
     </sc-for>
+  </div>
   </div>
 </section>
 
@@ -595,7 +602,7 @@ class Component extends DCLogic {
   feedPaused = false;
   scrollFeed(d) {
     const el = this.feedRef.current; if (!el) return;
-    const card = el.firstElementChild; const step = card ? card.getBoundingClientRect().width + 16 : el.clientWidth * 0.75;
+    const card = el.querySelector(".live-post"); const step = card ? card.getBoundingClientRect().width + 16 : el.clientWidth * 0.75;
     if (d > 0 && el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) el.scrollTo({ left: 0, behavior: 'smooth' });
     else el.scrollBy({ left: d * step, behavior: 'smooth' });
   }
